@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://di7s0rhb0uodg"]
+
+[ext_resource type="PackedScene" uid="uid://csiadbhl4bogk" path="res://assets/cartoon_plane.glb" id="1_jc62a"]
+
+[node name="Plane" type="CharacterBody3D"]
+
+[node name="cartoon_plane" parent="." instance=ExtResource("1_jc62a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="cartoon_plane" index="6"]
+autoplay = "prop_spin"
+
+[editable path="cartoon_plane"]
