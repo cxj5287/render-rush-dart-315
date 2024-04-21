@@ -23,6 +23,10 @@ Global="*res://global.gd"
 
 window/dpi/allow_hidpi=false
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 pitch_up={
