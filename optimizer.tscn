@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://da1xvd3a3hl5p"]
+
+[ext_resource type="Script" path="res://optimizer.gd" id="1_0u6al"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7upy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llnnc"]
+albedo_color = Color(0.152941, 1, 0.0470588, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 8.83
+
+[sub_resource type="PrismMesh" id="PrismMesh_ni44h"]
+
+[node name="Optimizer" type="Area3D" groups=["optimizer"]]
+collision_mask = 2
+script = ExtResource("1_0u6al")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_i7upy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_llnnc")
+mesh = SubResource("PrismMesh_ni44h")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

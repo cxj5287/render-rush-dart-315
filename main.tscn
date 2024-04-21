@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dslqjnpgcwwwo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_1o2kh"]
+[ext_resource type="PackedScene" uid="uid://di7s0rhb0uodg" path="res://plane.tscn" id="1_rh6hi"]
+[ext_resource type="Sky" uid="uid://camtopsxmriy2" path="res://new_sky.tres" id="2_2kpx5"]
+[ext_resource type="PackedScene" uid="uid://b2aqcn28l33dc" path="res://chunk.tscn" id="2_4ca7e"]
+[ext_resource type="Script" path="res://camera3d.gd" id="4_c5dpd"]
+[ext_resource type="PackedScene" uid="uid://c142didcxtk1w" path="res://ui.tscn" id="6_7upim"]
+
+[sub_resource type="Environment" id="Environment_3m3jt"]
+background_mode = 2
+sky = ExtResource("2_2kpx5")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_1o2kh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3m3jt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.411513, 0.391634, -0.82297, 0.756498, 0.356821, 0.548078, 0.508299, -0.848117, -0.149434, 0, 0, -1.39592)
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+
+[node name="Plane" parent="." instance=ExtResource("1_rh6hi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.86488, 0)
+
+[node name="Chunk" parent="." instance=ExtResource("2_4ca7e")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("4_c5dpd")
+target_path = NodePath("../Plane")
+offset = Vector3(0, 3, 10)
+
+[node name="UI" parent="." instance=ExtResource("6_7upim")]
+
+[connection signal="dead" from="Plane" to="." method="_on_plane_dead"]
+[connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
+[connection signal="score_changed" from="Plane" to="UI" method="update_score"]

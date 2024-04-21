@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsgvjjhorcj2a"]
+
+[ext_resource type="Script" path="res://Ring.gd" id="1_x6nuq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d77j8"]
+radius = 1.48546
+
+[sub_resource type="SphereMesh" id="SphereMesh_tgqni"]
+radius = 1.5
+height = 3.0
+radial_segments = 12
+
+[node name="Ring" type="Area3D" groups=["rings"]]
+collision_mask = 2
+script = ExtResource("1_x6nuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_d77j8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" groups=["rings"]]
+mesh = SubResource("SphereMesh_tgqni")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
