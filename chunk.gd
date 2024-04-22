@@ -41,8 +41,8 @@ func _ready():
 
 func add_buildings():
 	for side in [-1, 1]:
-		var zpos = -10
-		for i in 18:
+		var zpos = 10
+		for i in 20:
 			if randf() > 1:
 				zpos -= randi_range(5, 10)
 				continue
@@ -51,7 +51,9 @@ func add_buildings():
 			all_buildings.append(nb)
 			nb.transform.origin.z = zpos
 			nb.transform.origin.x = 25 * side
-			zpos -= nb.get_node("MeshInstance3D").mesh.get_aabb().size.z
+			var offset = nb.get_node("MeshInstance3D").mesh.get_aabb().size.z 
+			zpos -= 10
+			print(zpos)
 			nb.get_child(0).hide()
 			nb.get_child(1).hide()
 			

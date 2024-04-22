@@ -28,13 +28,11 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.23449)
 mesh = SubResource("ArrayMesh_b1483")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" groups=["obstacle_03"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0411072, 1.89111, -0.0148926)
-shape = SubResource("BoxShape3D_vs8xi")
-
 [node name="Proto_Tree" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -1.04087)
 mesh = ExtResource("2_qr1nv")
 skeleton = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["obstacle_03"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0411072, 1.89111, -1.24938)
+shape = SubResource("BoxShape3D_vs8xi")
