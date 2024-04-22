@@ -19,15 +19,16 @@ func _ready():
 	add_optimizer()
 	player.connect("growth_change", Callable(self, "_on_growth_change"))
 	
-	if player.growth_level <= (player.max_growth_level / 2):
-		var percentage_complete = ((player.growth_level-1) / ((player.max_growth_level / 2) - 1))
-		var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
-		
-		for i in range(num_buildings_to_unhide):
-			all_buildings[i].show()
-	else:
-		for i in all_buildings.size():
-			all_buildings[i].show()
+	
+	#if player.growth_level <= (player.max_growth_level / 2):
+		#var percentage_complete = ((player.growth_level-1) / ((player.max_growth_level / 2) - 1))
+		#var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
+		#
+		#for i in range(num_buildings_to_unhide):
+			#all_buildings[i].show()
+	#else:
+		#for i in all_buildings.size():
+			#all_buildings[i].show()
 	
 	
 
@@ -42,9 +43,9 @@ func add_buildings():
 			add_child(nb)
 			all_buildings.append(nb)
 			nb.transform.origin.z = zpos
-			nb.transform.origin.x = 20 * side
+			nb.transform.origin.x = 25 * side
 			zpos -= nb.get_node("MeshInstance3D").mesh.get_aabb().size.z
-			nb.hide()
+			#nb.hide()
 			
 			
 
@@ -81,10 +82,11 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
 
 func _on_growth_change():
+	
 	var percentage_complete = ((player.growth_level-1) / ((player.max_growth_level / 2) - 1))
 	var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
 	
-	for i in range(num_buildings_to_unhide):
-		all_buildings[i].show()
+	#for i in range(num_buildings_to_unhide):
+		#all_buildings[i].show()
 
 	

@@ -18,7 +18,7 @@ var roll_input = 0
 var pitch_input = 0
 @export var forward_speed = 25
 var max_altitude = 20
-var max_growth_level = float(12);
+var max_growth_level = float(24);
 var growth_level = float(1);
 var max_fps = 60;
 
@@ -26,12 +26,11 @@ var level = 0;
 
 func _ready():
 	# Hide all parts of the character initially
-	for child in $proto_char.get_children():
+	for child in $Elf.get_children():
 		if child is MeshInstance3D:
 			child.hide()
 	
-	$proto_char.get_child(0).show()
-	
+	$Elf.get_child(4).show()
 	
 
 func get_input(delta):
@@ -61,7 +60,7 @@ func _physics_process(delta):
 
 func die():
 	set_physics_process(false)
-	$proto_char.hide()
+	$Elf.hide()
 	$Explosion.show()
 	$Explosion.play("default")
 	await $Explosion.animation_finished
@@ -92,24 +91,25 @@ func _on_area_3d_area_entered(area):
 	# Increment the growth level if not at maximum
 		if growth_level < (max_growth_level/2):
 			growth_level += 1
-			for i in range(growth_level):
-				if $proto_char.get_child(i) is MeshInstance3D:
-					$proto_char.get_child(i).show()
+			$Elf.get_node(str("P_0", growth_level)).show()
 			emit_signal("growth_change")
 			if growth_level == 6:
 				level+=1;
 				update_level(level)
-		elif growth_level >= (max_growth_level / 2) && growth_level < max_growth_level:
+		elif growth_level >= (max_growth_level / 4) && growth_level < (max_growth_level / 2):
 			growth_level+=1
-			for i in range(growth_level - 6):
-				$proto_char.get_child(i).get_mesh().get("surface_0/material").albedo_color = Color(1,0,0)
+			$Elf.get_node(str("P_0", growth_level - 6)).hide()
+			print($Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 6)))
+			$Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 6)).show()
 			if growth_level == 12:
 				level+=1;
 				update_level(level)
+		elif growth_level >= (max_growth_level / 2) & growth_level < (max_growth_level / (4/3)):
+			$Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 12)).
 		
 		
 	if area.is_in_group("optimizer"):
-		if fuel < 12:
+		if fuel < 10:
 			fuel+=2
 		else:
 			fuel = 0;

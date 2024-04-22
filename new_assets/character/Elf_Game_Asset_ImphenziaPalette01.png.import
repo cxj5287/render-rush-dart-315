@@ -2,22 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpsivs7ipewi"
-path.s3tc="res://.godot/imported/Elf_Game_Asset_ImphenziaPalette01.png-b1e9e2c2f6641a0faf62b6dae4ecbd49.s3tc.ctex"
+uid="uid://c768mjd3tvmeq"
+path="res://.godot/imported/Elf_Game_Asset_ImphenziaPalette01.png-b1e9e2c2f6641a0faf62b6dae4ecbd49.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://new_assets/character/Elf_Game_Asset_ImphenziaPalette01.png"
-dest_files=["res://.godot/imported/Elf_Game_Asset_ImphenziaPalette01.png-b1e9e2c2f6641a0faf62b6dae4ecbd49.s3tc.ctex"]
+dest_files=["res://.godot/imported/Elf_Game_Asset_ImphenziaPalette01.png-b1e9e2c2f6641a0faf62b6dae4ecbd49.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
