@@ -91,12 +91,11 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("rings"):
 		fuel += 2
 		
-
 	# Increment the growth level if not at maximum
 		if level == 1:
 			growth_level += 1
 			$Elf.get_node(str("P_0", growth_level)).show()
-			emit_signal("growth_change")
+			
 			if growth_level == 6:
 				level+=1;
 				update_level(level)
@@ -118,6 +117,8 @@ func _on_area_3d_area_entered(area):
 			$Elf.get_child(0).get_child(0).show_rest_only = false
 			$Elf.get_child(7).play("Running")
 			$Elf.get_child(0).transform.origin.y = 0
+	
+		emit_signal("growth_change")
 		
 		
 	if area.is_in_group("optimizer"):

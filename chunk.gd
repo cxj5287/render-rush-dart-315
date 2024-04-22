@@ -19,16 +19,23 @@ func _ready():
 	add_optimizer()
 	player.connect("growth_change", Callable(self, "_on_growth_change"))
 	
+	var percentage_complete = ((player.growth_level-1) / (player.max_growth_level - 1))
+	var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
+	if player.level == 1:
+		if player.growth_level <= player.max_growth_level:
+			for i in range(num_buildings_to_unhide):
+				all_buildings[i].get_child(1).show()
+	elif player.level == 2:
+		for i in range(all_buildings.size()):
+			all_buildings[i].get_child(1).show()
+		for i in range(num_buildings_to_unhide):
+			all_buildings[i].get_child(0).show()
+			all_buildings[i].get_child(1).hide()
+	elif player.level >= 3:
+		for i in all_buildings.size():
+			all_buildings[i].get_child(0).show()
+		
 	
-	#if player.growth_level <= (player.max_growth_level / 2):
-		#var percentage_complete = ((player.growth_level-1) / ((player.max_growth_level / 2) - 1))
-		#var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
-		#
-		#for i in range(num_buildings_to_unhide):
-			#all_buildings[i].show()
-	#else:
-		#for i in all_buildings.size():
-			#all_buildings[i].show()
 	
 	
 
@@ -45,7 +52,8 @@ func add_buildings():
 			nb.transform.origin.z = zpos
 			nb.transform.origin.x = 25 * side
 			zpos -= nb.get_node("MeshInstance3D").mesh.get_aabb().size.z
-			#nb.hide()
+			nb.get_child(0).hide()
+			nb.get_child(1).hide()
 			
 			
 
@@ -82,11 +90,16 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
 
 func _on_growth_change():
-	
-	var percentage_complete = ((player.growth_level-1) / ((player.max_growth_level / 2) - 1))
+	var percentage_complete = (player.growth_level-1) / (player.max_growth_level - 1)
 	var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
+	print(percentage_complete)
+	if player.level == 1:
+		for i in range(num_buildings_to_unhide):
+			all_buildings[i].get_child(1).show()
+	elif player.level == 2:
+		for i in range(num_buildings_to_unhide):
+			all_buildings[i].get_child(1).hide()
+			all_buildings[i].get_child(0).show()
 	
-	#for i in range(num_buildings_to_unhide):
-		#all_buildings[i].show()
 
 	

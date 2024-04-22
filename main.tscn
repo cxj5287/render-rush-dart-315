@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c142didcxtk1w" path="res://ui.tscn" id="6_7upim"]
 
 [sub_resource type="Environment" id="Environment_3m3jt"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.180392, 0.180392, 0.180392, 1)
 sky = ExtResource("2_2kpx5")
 
 [node name="Main" type="Node3D"]
@@ -28,9 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91418, 0)
 [node name="Chunk" parent="." instance=ExtResource("2_4ca7e")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+fov = 61.0
 script = ExtResource("4_c5dpd")
 target_path = NodePath("../Plane")
-offset = Vector3(0, 5, 10)
+offset = Vector3(0, 4, 10)
 
 [node name="UI" parent="." instance=ExtResource("6_7upim")]
 

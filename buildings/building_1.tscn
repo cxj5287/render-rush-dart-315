@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcaq1m81y38yl"]
+[gd_scene load_steps=5 format=3 uid="uid://bcaq1m81y38yl"]
 
 [ext_resource type="Material" uid="uid://bxmm1b833eavm" path="res://new_assets/character/color_tiles.tres" id="1_hc5g5"]
+[ext_resource type="ArrayMesh" uid="uid://bq076tdtfywy1" path="res://new_assets/trees/Tree_Proto.obj" id="2_c887g"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cyha3"]
 _surfaces = [{
@@ -32,3 +33,8 @@ mesh = SubResource("ArrayMesh_cyha3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" groups=["obstacle_01"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725098, 1.92285, -0.419586)
 shape = SubResource("BoxShape3D_n1xtx")
+
+[node name="Proto_Tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -1.04087)
+mesh = ExtResource("2_c887g")
+skeleton = NodePath("../MeshInstance3D")

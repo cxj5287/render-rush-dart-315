@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2aqcn28l33dc"]
 
-[ext_resource type="Texture2D" uid="uid://cj0hli1yqirk8" path="res://assets/textures/texture_01.png" id="1_a73it"]
 [ext_resource type="Script" path="res://chunk.gd" id="1_rn5jq"]
+[ext_resource type="Texture2D" uid="uid://d2pxm5un37fla" path="res://new_assets/3D_Texture.png" id="2_ipchu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rv1k"]
-albedo_texture = ExtResource("1_a73it")
-uv1_scale = Vector3(2, 10, 2)
+albedo_texture = ExtResource("2_ipchu")
+uv1_scale = Vector3(5, 10, 2)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_se316"]
 material = SubResource("StandardMaterial3D_1rv1k")
-size = Vector2(50, 200)
+size = Vector2(200, 200)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sc04r"]
 data = PackedVector3Array(25, 0, 100, -25, 0, 100, 25, 0, -100, -25, 0, 100, -25, 0, -100, 25, 0, -100)

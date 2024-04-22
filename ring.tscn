@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Ring.gd" id="1_x6nuq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d77j8"]
-radius = 1.48546
+radius = 1.48345
 
 [sub_resource type="SphereMesh" id="SphereMesh_tgqni"]
 radius = 1.5

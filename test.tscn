@@ -5,11 +5,6 @@
 [node name="Test" type="Node3D"]
 
 [node name="Plane" parent="." instance=ExtResource("1_k3rsr")]
-pitch_speed = 1.1
-roll_speed = 1.5
-level_speed = 4.0
-fuel_burn = 0.2
-forward_speed = 25
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18261)

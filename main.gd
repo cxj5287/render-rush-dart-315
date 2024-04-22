@@ -11,7 +11,7 @@ var env
 func _ready():
 	pass # Replace with function body.
 	env = $WorldEnvironment.environment
-	env.background_mode = 1
+	env.background_mode = 0
 	
 
 
@@ -24,6 +24,7 @@ func _process(delta):
 		new_chunk.level = num_chunks / 4
 		add_child(new_chunk)
 		max_position -= chunk_size
+	if $Plane.level == 4:
 		env.background_mode = 2
 
 
