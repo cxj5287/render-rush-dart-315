@@ -18,11 +18,13 @@ var roll_input = 0
 var pitch_input = 0
 @export var forward_speed = 25
 var max_altitude = 20
-var max_growth_level = float(24);
+var max_growth_level = float(6);
 var growth_level = float(1);
 var max_fps = 60;
 
-var level = 0;
+var level = 1;
+
+
 
 func _ready():
 	# Hide all parts of the character initially
@@ -88,24 +90,33 @@ func set_score(value):
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("rings"):
 		fuel += 2
+		
+
 	# Increment the growth level if not at maximum
-		if growth_level < (max_growth_level/2):
+		if level == 1:
 			growth_level += 1
 			$Elf.get_node(str("P_0", growth_level)).show()
 			emit_signal("growth_change")
 			if growth_level == 6:
 				level+=1;
 				update_level(level)
-		elif growth_level >= (max_growth_level / 4) && growth_level < (max_growth_level / 2):
+		elif level == 2:
+			$Elf.get_node(str("P_0", growth_level)).hide()
+			$Elf.get_child(0).get_child(0).get_node(str("0", growth_level)).show()
 			growth_level+=1
-			$Elf.get_node(str("P_0", growth_level - 6)).hide()
-			print($Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 6)))
-			$Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 6)).show()
-			if growth_level == 12:
+			if growth_level == 7:
 				level+=1;
 				update_level(level)
-		elif growth_level >= (max_growth_level / 2) & growth_level < (max_growth_level / (4/3)):
-			$Elf.get_child(0).get_child(0).get_node(str("0", growth_level - 12)).
+		elif level == 3:
+			var node = $Elf.get_child(0).get_child(0).get_node(str("0", growth_level))
+			node.get_mesh().get("surface_0/material").albedo_texture_msdf = false
+			growth_level+=1
+			if growth_level == 7:
+				level+=1
+				update_level(level)
+		elif level == 4:
+			$Elf.get_child(0).get_child(0).show_rest_only = false
+			$Elf.get_child(7).play("Running")
 		
 		
 	if area.is_in_group("optimizer"):
@@ -118,6 +129,7 @@ func _on_area_3d_area_entered(area):
 
 func update_level(level):
 	forward_speed += 10
+	growth_level = 1
 	
 	
 	
