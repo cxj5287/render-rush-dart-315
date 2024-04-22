@@ -117,6 +117,7 @@ func _on_area_3d_area_entered(area):
 		elif level == 4:
 			$Elf.get_child(0).get_child(0).show_rest_only = false
 			$Elf.get_child(7).play("Running")
+			$Elf.get_child(0).transform.origin.y = 0
 		
 		
 	if area.is_in_group("optimizer"):

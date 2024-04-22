@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://di7s0rhb0uodg"]
+[gd_scene load_steps=46 format=3 uid="uid://di7s0rhb0uodg"]
 
 [ext_resource type="Script" path="res://plane.gd" id="1_dg7sd"]
 [ext_resource type="PackedScene" uid="uid://bplut6q0y5xec" path="res://new_assets/proto_char.glb" id="2_gjmjm"]
@@ -674,14 +674,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8xhc5"]
-size = Vector3(1.60938, 1.68665, 0.978516)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4omv"]
-albedo_color = Color(0, 0.572549, 0.894118, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_c8mdl"]
-material = SubResource("StandardMaterial3D_n4omv")
-size = Vector3(100, 0.05, 0.05)
+size = Vector3(1.11939, 1.15128, 0.978516)
 
 [node name="Plane" type="CharacterBody3D"]
 collision_layer = 2
@@ -690,9 +683,10 @@ script = ExtResource("1_dg7sd")
 [node name="Elf" parent="." instance=ExtResource("2_sjx1p")]
 
 [node name="Armature" parent="Elf" index="0"]
-transform = Transform3D(-0.01, -8.74228e-10, 3.82137e-17, 0, -4.37114e-10, -0.01, 8.74228e-10, -0.01, 4.37114e-10, 0, 0, 0)
+transform = Transform3D(-0.01, -8.74228e-10, 3.82137e-17, 0, -4.37114e-10, -0.01, 8.74228e-10, -0.01, 4.37114e-10, 0, 1.48285, 0)
 
 [node name="Skeleton3D" parent="Elf/Armature" index="0"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, 1.27055e-21, 0, 1, 0, 0, 0)
 show_rest_only = true
 bones/0/position = Vector3(0.967457, -2.99222, -130.585)
 bones/0/rotation = Quaternion(-0.656522, -0.0499816, 0.0313714, 0.751995)
@@ -734,48 +728,58 @@ bones/31/position = Vector3(-4.05033e-07, 27.4859, 7.41182e-07)
 bones/31/rotation = Quaternion(0.560888, 0.137849, -0.00484322, 0.816321)
 
 [node name="03" parent="Elf/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 8.47033e-22, 0, 1, 0, 8.47033e-22, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_1dt4o")
 
 [node name="04" parent="Elf/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 7.10543e-15, -1.27055e-21, -7.10543e-15, 1, -3.55271e-15, -1.27055e-21, 3.55271e-15, 1, 0, 0, 0)
+transform = Transform3D(1, 0, -8.47033e-22, 0, 1, 0, -8.47033e-22, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_2s3nb")
 
 [node name="02" parent="Elf/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 8.47033e-22, 0, 1, 0, 8.47033e-22, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_43omu")
 
 [node name="01" parent="Elf/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 8.47033e-22, 0, 1, 0, 8.47033e-22, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_m2fk8")
 
 [node name="05" parent="Elf/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, -4.23516e-22, 3.55271e-15, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_beti5")
 
 [node name="06" parent="Elf/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 8.47033e-22, 0, 1, 0, 8.47033e-22, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_bg7vx")
 
 [node name="P_03" parent="Elf" index="1"]
-transform = Transform3D(-4.18909e-09, 0.731725, 0, -0.0958352, -3.19847e-08, 0, 0, 0, 0.0699272, 1.05, 0.848, 0.035)
+transform = Transform3D(-4.18909e-09, 0.731725, 0, -0.0958352, -3.19847e-08, 0, 0, 0, 0.0699272, 1.05, 2.33085, 0.035)
+visible = false
 
 [node name="P_04" parent="Elf" index="2"]
-transform = Transform3D(-4.18909e-09, 0.731725, 0, -0.0958352, -3.19847e-08, 0, 0, 0, 0.0699272, -1.095, 0.848, 0.035)
+transform = Transform3D(-4.18909e-09, 0.731725, 0, -0.0958352, -3.19847e-08, 0, 0, 0, 0.0699272, -1.095, 2.33085, 0.035)
+visible = false
 
 [node name="P_02" parent="Elf" index="3"]
-transform = Transform3D(0.353906, 0, 0, 0, 0.611647, 0, 0, 0, 0.422719, -0.00730562, 0.575014, 0.051984)
+transform = Transform3D(0.353906, 0, 0, 0, 0.611647, 0, 0, 0, 0.422719, -0.00730562, 2.05786, 0.051984)
+visible = false
 
 [node name="P_01" parent="Elf" index="4"]
-transform = Transform3D(0.611647, 0, 0, 0, 0.611647, 0, 0, 0, 0.611647, -0.00730562, 1.78264, 0.051984)
+transform = Transform3D(0.611647, 0, 0, 0, 0.611647, 0, 0, 0, 0.611647, -0.00730562, 3.26549, 0.051984)
+visible = false
 
 [node name="P_05" parent="Elf" index="5"]
-transform = Transform3D(-0.0958352, 1.10487e-07, 0, -1.44707e-08, -0.731725, 0, 0, 0, 0.0699272, 0.212, -0.739, 0.035)
+transform = Transform3D(-0.0958352, 1.10487e-07, 0, -1.44707e-08, -0.731725, 0, 0, 0, 0.0699272, 0.212, 0.743845, 0.035)
+visible = false
 
 [node name="P_06" parent="Elf" index="6"]
-transform = Transform3D(-0.0958352, 1.10487e-07, 0, -1.44707e-08, -0.731725, 0, 0, 0, 0.0699272, -0.204, -0.739, 0.035)
+transform = Transform3D(-0.0958352, 1.10487e-07, 0, -1.44707e-08, -0.731725, 0, 0, 0, 0.0699272, -0.204, 0.743845, 0.035)
+visible = false
 
 [node name="AnimationPlayer" parent="Elf" index="7"]
 libraries = {
@@ -811,24 +815,14 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_eobcv")
 
 [node name="Collision_Shape_01" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.858307, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.0863633, 1.34037, 0)
 shape = SubResource("BoxShape3D_8xhc5")
 
 [node name="Area3D" type="Area3D" parent="."]
 
-[node name="Collision_Shape_02" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(6.25, 0, 0, 0, 6.25, 0, 0, 0, 6.25, 0, 3.00407, 0)
+[node name="Collision_Shape_01" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.0863633, 1.34037, 0)
 shape = SubResource("BoxShape3D_8xhc5")
-
-[node name="XAxis" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.14691, 0)
-visible = false
-mesh = SubResource("BoxMesh_c8mdl")
-
-[node name="ZAxis" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.14691, 0)
-visible = false
-mesh = SubResource("BoxMesh_c8mdl")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 
