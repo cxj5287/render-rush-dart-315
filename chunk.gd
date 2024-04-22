@@ -19,6 +19,7 @@ func _ready():
 	add_optimizer()
 	player.connect("growth_change", Callable(self, "_on_growth_change"))
 	
+	# Set new chunk visibility for buildings
 	var percentage_complete = ((player.growth_level-1) / (player.max_growth_level - 1))
 	var num_buildings_to_unhide = int(percentage_complete * all_buildings.size())
 	if player.level == 1:
@@ -35,7 +36,6 @@ func _ready():
 		for i in all_buildings.size():
 			all_buildings[i].get_child(0).show()
 		
-	
 	
 	
 

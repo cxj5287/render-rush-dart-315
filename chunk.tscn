@@ -1,15 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2aqcn28l33dc"]
+[gd_scene load_steps=4 format=3 uid="uid://b2aqcn28l33dc"]
 
 [ext_resource type="Script" path="res://chunk.gd" id="1_rn5jq"]
-[ext_resource type="Texture2D" uid="uid://d2pxm5un37fla" path="res://new_assets/3D_Texture.png" id="2_ipchu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rv1k"]
-albedo_texture = ExtResource("2_ipchu")
-uv1_scale = Vector3(5, 10, 2)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_se316"]
-material = SubResource("StandardMaterial3D_1rv1k")
-size = Vector2(200, 200)
+[ext_resource type="PackedScene" uid="uid://bnt8277xhtf0d" path="res://new_assets/ground.glb" id="2_xxse4"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sc04r"]
 data = PackedVector3Array(25, 0, 100, -25, 0, 100, 25, 0, -100, -25, 0, 100, -25, 0, -100, 25, 0, -100)
@@ -17,16 +9,26 @@ data = PackedVector3Array(25, 0, 100, -25, 0, 100, 25, 0, -100, -25, 0, 100, -25
 [node name="Chunk" type="Node3D"]
 script = ExtResource("1_rn5jq")
 
-[node name="Ground" type="MeshInstance3D" parent="." groups=["obstacles"]]
+[node name="Ground2" parent="." instance=ExtResource("2_xxse4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
-mesh = SubResource("PlaneMesh_se316")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sc04r")
+
+[node name="Wireframe" parent="Ground2" index="1"]
+visible = false
+
+[node name="X-Axis" parent="Ground2" index="3"]
+visible = false
+
+[node name="Y-Axis" parent="Ground2" index="4"]
+visible = false
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="Ground2"]

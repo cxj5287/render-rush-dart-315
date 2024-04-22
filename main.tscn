@@ -9,7 +9,7 @@
 
 [sub_resource type="Environment" id="Environment_3m3jt"]
 background_mode = 1
-background_color = Color(0.180392, 0.180392, 0.180392, 1)
+background_color = Color(0.290196, 0.301961, 0.290196, 1)
 sky = ExtResource("2_2kpx5")
 
 [node name="Main" type="Node3D"]

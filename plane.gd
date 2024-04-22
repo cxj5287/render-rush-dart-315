@@ -91,7 +91,7 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("rings"):
 		fuel += 2
 		
-	# Increment the growth level if not at maximum
+	# Increment the growth level based on level
 		if level == 1:
 			growth_level += 1
 			$Elf.get_node(str("P_0", growth_level)).show()
