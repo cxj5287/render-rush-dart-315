@@ -29,7 +29,7 @@ stretch_margin_bottom = 6
 texture_over = ExtResource("2_bsc10")
 texture_progress = ExtResource("3_idxa6")
 
-[node name="Score" type="Label" parent="."]
+[node name="Level" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

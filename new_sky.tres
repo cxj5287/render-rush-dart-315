@@ -1,9 +1,11 @@
-[gd_resource type="Sky" load_steps=3 format=3 uid="uid://camtopsxmriy2"]
+[gd_resource type="Sky" load_steps=2 format=3 uid="uid://camtopsxmriy2"]
 
-[ext_resource type="Texture2D" uid="uid://dn05alqs52vn0" path="res://assets/styled_sky.hdr" id="1_ga5ln"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_76lv5"]
-panorama = ExtResource("1_ga5ln")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6kehy"]
+sky_top_color = Color(0.509804, 0.839216, 0.952941, 1)
+sky_horizon_color = Color(0.831373, 0.85098, 0.788235, 1)
+sky_curve = 0.0923358
+ground_horizon_color = Color(0.780392, 0.862745, 0.866667, 1)
+sun_angle_max = 0.0
 
 [resource]
-sky_material = SubResource("PanoramaSkyMaterial_76lv5")
+sky_material = SubResource("ProceduralSkyMaterial_6kehy")

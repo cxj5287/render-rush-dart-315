@@ -28,7 +28,7 @@ func _process(delta):
 func _on_body_entered(body):
 	$CollisionShape3D/MeshInstance3D.hide()
 	var d = global_position.distance_to(body.global_position)
-	body.score += 200
+
 	
 	#if d < 2.0:
 		#$Label3D.text = "200"

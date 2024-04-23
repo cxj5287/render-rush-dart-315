@@ -8,9 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://c142didcxtk1w" path="res://ui.tscn" id="6_7upim"]
 
 [sub_resource type="Environment" id="Environment_3m3jt"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.290196, 0.301961, 0.290196, 1)
 sky = ExtResource("2_2kpx5")
+ambient_light_energy = 0.0
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.701961, 0.823529, 0.835294, 1)
+fog_density = 0.0077
+fog_aerial_perspective = 0.323
+fog_sky_affect = 0.99
+volumetric_fog_albedo = Color(0.827451, 0.878431, 0.584314, 1)
+volumetric_fog_emission = Color(0.270588, 0.4, 0.447059, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_1o2kh")
@@ -19,7 +28,7 @@ script = ExtResource("1_1o2kh")
 environment = SubResource("Environment_3m3jt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.411513, 0.391634, -0.82297, 0.756498, 0.356821, 0.548078, 0.508299, -0.848117, -0.149434, 0, 0, -1.39592)
+transform = Transform3D(0.481754, -0.775164, 0.408698, 0, 0.466387, 0.884581, -0.876307, -0.42615, 0.224683, 0, 0, 0)
 light_energy = 2.0
 light_volumetric_fog_energy = 0.0
 
@@ -38,4 +47,3 @@ offset = Vector3(0, 4, 10)
 
 [connection signal="dead" from="Plane" to="." method="_on_plane_dead"]
 [connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
-[connection signal="score_changed" from="Plane" to="UI" method="update_score"]

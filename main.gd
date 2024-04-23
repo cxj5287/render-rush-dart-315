@@ -24,8 +24,11 @@ func _process(delta):
 		new_chunk.level = num_chunks / 4
 		add_child(new_chunk)
 		max_position -= chunk_size
+	if $Plane.level < 4:
+		env.fog_enabled = false
 	if $Plane.level == 4:
 		env.background_mode = 2
+		env.fog_enabled = true
 
 
 func _on_plane_dead():

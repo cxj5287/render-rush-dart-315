@@ -32,9 +32,24 @@ func _ready():
 		for i in range(num_buildings_to_unhide):
 			all_buildings[i].get_child(0).show()
 			all_buildings[i].get_child(1).hide()
+		
+		if player.growth_level == 6:
+			$Ground.get_child(0).hide()
+			$Ground.get_child(2).hide()
+			$Ground.get_child(3).hide()
+			$Ground.get_child(1).show()
+	
 	elif player.level >= 3:
 		for i in all_buildings.size():
 			all_buildings[i].get_child(0).show()
+		
+		$Ground.get_child(0).hide()
+		$Ground.get_child(2).hide()
+		$Ground.get_child(3).hide()
+		$Ground.get_child(1).show()
+	
+		if player.growth_level == 6:
+			$Ground.get_child(1).get_mesh().get("surface_0/material").albedo_texture_msdf = false
 		
 	
 	
@@ -102,6 +117,14 @@ func _on_growth_change():
 		for i in range(num_buildings_to_unhide):
 			all_buildings[i].get_child(1).hide()
 			all_buildings[i].get_child(0).show()
+		
+		if player.growth_level == 6:
+			$Ground.get_child(0).hide()
+			$Ground.get_child(2).hide()
+			$Ground.get_child(3).hide()
+			$Ground.get_child(1).show()
+	elif player.level == 3 && player.growth_level == 6:
+		$Ground.get_child(1).get_mesh().get("surface_0/material").albedo_texture_msdf = false
 	
 
 	

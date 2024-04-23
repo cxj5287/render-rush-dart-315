@@ -1,6 +1,6 @@
 extends CharacterBody3D
 signal dead
-signal score_changed
+signal level_changed
 signal fuel_changed
 
 signal growth_change
@@ -12,8 +12,6 @@ signal growth_change
 var max_fuel = 12
 var fuel = 0: 
 	set = set_fuel
-var score = 0: 
-	set = set_score
 var roll_input = 0
 var pitch_input = 0
 @export var forward_speed = 25
@@ -68,9 +66,7 @@ func die():
 	await $Explosion.animation_finished
 	$Explosion.hide()
 	dead.emit()
-	if score > Global.high_score:
-		Global.high_score = score
-		Global.save_score()
+	
 
 func set_fuel(value):
 	fuel = min(value, max_fuel)
@@ -82,9 +78,6 @@ func set_fuel(value):
 		Engine.set_max_fps(max_fps)
 		print(Engine.get_max_fps())
 
-func set_score(value):
-	score = value
-	score_changed.emit(score)
 
 
 func _on_area_3d_area_entered(area):
@@ -132,6 +125,7 @@ func _on_area_3d_area_entered(area):
 func update_level(level):
 	forward_speed += 10
 	growth_level = 1
+	emit_signal("level_changed")
 	
 	
 	
