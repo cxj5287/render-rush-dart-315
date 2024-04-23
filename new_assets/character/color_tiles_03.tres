@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c0fru5ow6das4"]
+
+[ext_resource type="Texture2D" uid="uid://c768mjd3tvmeq" path="res://new_assets/character/Elf_Game_Asset_ImphenziaPalette01.png" id="1_quayu"]
+
+[resource]
+resource_name = "Color_Tiles.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_quayu")
+albedo_texture_msdf = true
+roughness = 0.5

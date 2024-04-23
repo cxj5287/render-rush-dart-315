@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxurx5wnxtff6"]
+[gd_scene load_steps=8 format=3 uid="uid://cxurx5wnxtff6"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_hnqpt"]
 [ext_resource type="Texture2D" uid="uid://bklb8p18vg8jt" path="res://new_assets/Background.png" id="2_588ni"]
@@ -10,10 +10,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_e0nqr"]
 font = ExtResource("6_mmt3u")
 font_size = 128
-
-[sub_resource type="LabelSettings" id="LabelSettings_krvub"]
-font = ExtResource("6_mmt3u")
-font_size = 48
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -63,14 +59,6 @@ grow_vertical = 2
 text = "RENDER RUSH"
 label_settings = SubResource("LabelSettings_e0nqr")
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HighScore" type="Label" parent="."]
-layout_mode = 0
-offset_left = 720.0
-offset_right = 1152.0
-offset_bottom = 102.0
-label_settings = SubResource("LabelSettings_krvub")
 vertical_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -12,6 +12,7 @@ func _ready():
 	pass # Replace with function body.
 	env = $WorldEnvironment.environment
 	env.background_mode = 0
+	$Plane.connect("level_changed", Callable(self, "_on_level_changed"))
 	
 
 
@@ -33,3 +34,6 @@ func _process(delta):
 
 func _on_plane_dead():
 	get_tree().change_scene_to_file(title_screen)
+
+func _on_level_changed():
+	$UI.update_level_ui(($Plane.level))
