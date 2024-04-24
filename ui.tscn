@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c142didcxtk1w"]
+[gd_scene load_steps=10 format=3 uid="uid://c142didcxtk1w"]
 
 [ext_resource type="Script" path="res://UI.gd" id="1_1m0aa"]
 [ext_resource type="Texture2D" uid="uid://cx3wjqyjg3d0p" path="res://assets/bar_glass.png" id="2_bsc10"]
@@ -8,6 +8,47 @@
 [sub_resource type="LabelSettings" id="LabelSettings_nqq43"]
 font = ExtResource("4_p4jcp")
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_stv6x"]
+font = ExtResource("4_p4jcp")
+font_size = 48
+
+[sub_resource type="Animation" id="Animation_f03dc"]
+resource_name = "color_change"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Deadline:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.917647, 0, 0.0196078, 1), Color(1, 1, 1, 1), Color(0.917647, 0, 0.0196078, 1), Color(1, 1, 1, 1), Color(0.917647, 0, 0.0196078, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bwia7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Deadline:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sigqo"]
+_data = {
+"RESET": SubResource("Animation_bwia7"),
+"color_change": SubResource("Animation_f03dc")
+}
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_1m0aa")
@@ -49,3 +90,28 @@ offset_bottom = 77.0
 grow_horizontal = 0
 text = "FPS:"
 label_settings = SubResource("LabelSettings_nqq43")
+
+[node name="Deadline" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -25.5
+offset_right = 47.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Deadline MOVED UP!!"
+label_settings = SubResource("LabelSettings_stv6x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Deadline"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_sigqo")
+}
+
+[connection signal="animation_finished" from="Deadline/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
