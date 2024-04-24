@@ -38,3 +38,14 @@ offset_bottom = 77.0
 grow_horizontal = 0
 text = "Level: 1"
 label_settings = SubResource("LabelSettings_nqq43")
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1145.0
+offset_right = -805.0
+offset_bottom = 77.0
+grow_horizontal = 0
+text = "FPS:"
+label_settings = SubResource("LabelSettings_nqq43")

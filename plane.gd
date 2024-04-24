@@ -2,6 +2,7 @@ extends CharacterBody3D
 signal dead
 signal level_changed
 signal fuel_changed
+signal fps_changed
 
 signal growth_change
 
@@ -72,9 +73,10 @@ func set_fuel(value):
 	fuel = min(value, max_fuel)
 	fuel_changed.emit(fuel)
 	if fuel >= 12:
-		max_fps -= 15
+		emit_signal("fps_changed")
+		max_fps -= 10
 		if max_fps == 0:
-			max_fps = 1
+			max_fps = 5
 		Engine.set_max_fps(max_fps)
 		print(Engine.get_max_fps())
 
@@ -108,9 +110,12 @@ func _on_area_3d_area_entered(area):
 				level+=1
 				update_level(level)
 		elif level == 4:
-			$Elf.get_child(0).get_child(0).show_rest_only = false
-			$Elf.get_child(7).play("Running")
-			$Elf.get_child(0).transform.origin.y = 0
+			growth_level+=1
+			if growth_level == 4:
+				$Elf.get_child(0).get_child(0).show_rest_only = false
+				$Elf.get_child(7).play("Running")
+				$Elf.get_child(0).transform.origin.y = 0
+			
 	
 		emit_signal("growth_change")
 		
@@ -123,6 +128,7 @@ func _on_area_3d_area_entered(area):
 			fuel = 0;
 			max_fps = 60;
 			Engine.set_max_fps(60)
+			emit_signal("fps_changed")
 			$PowerUp.play()
 
 func update_level(level):

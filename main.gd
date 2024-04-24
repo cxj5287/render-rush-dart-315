@@ -13,6 +13,9 @@ func _ready():
 	env = $WorldEnvironment.environment
 	env.background_mode = 0
 	$Plane.connect("level_changed", Callable(self, "_on_level_changed"))
+	$Plane.connect("fps_changed", Callable(self, "_on_fps_changed"))
+	
+	$Plane.get_child(6).play()
 	
 
 
@@ -28,12 +31,18 @@ func _process(delta):
 	if $Plane.level < 4:
 		env.fog_enabled = false
 	if $Plane.level == 4:
-		env.background_mode = 2
-		env.fog_enabled = true
-
+		if $Plane.growth_level == 2:
+			env.background_mode = 2
+		elif $Plane.growth_level == 3:
+			env.fog_enabled = true
+	
+	$UI.update_fps($Plane.max_fps)
 
 func _on_plane_dead():
 	get_tree().change_scene_to_file(title_screen)
 
 func _on_level_changed():
 	$UI.update_level_ui(($Plane.level))
+	
+func _on_fps_changed():
+	$UI.update_fps($Plane.max_fps)
