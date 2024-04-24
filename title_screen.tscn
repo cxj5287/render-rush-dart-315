@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxurx5wnxtff6"]
+[gd_scene load_steps=7 format=3 uid="uid://cxurx5wnxtff6"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_hnqpt"]
 [ext_resource type="Texture2D" uid="uid://bklb8p18vg8jt" path="res://new_assets/Background.png" id="2_588ni"]
-[ext_resource type="Texture2D" uid="uid://c08w6yra128s0" path="res://assets/buttons/play_button.png" id="2_pligg"]
-[ext_resource type="Texture2D" uid="uid://bvplurym04jnf" path="res://assets/buttons/play_button_pr.png" id="3_mmpj3"]
-[ext_resource type="Texture2D" uid="uid://diwidnej28dsw" path="res://assets/buttons/play_button_h.png" id="4_yla6r"]
+[ext_resource type="Texture2D" uid="uid://jd4lthi8idxg" path="res://new_assets/ui/StartButton.png" id="3_7w74d"]
+[ext_resource type="Texture2D" uid="uid://dfbfe6bg1r6l4" path="res://new_assets/ui/StartButton-Pressed.png" id="4_k3k14"]
 [ext_resource type="FontFile" uid="uid://5lbcy43clt4" path="res://new_assets/Square.ttf" id="6_mmt3u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0nqr"]
@@ -39,9 +38,8 @@ offset_right = 664.0
 offset_bottom = 511.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_pligg")
-texture_pressed = ExtResource("3_mmpj3")
-texture_hover = ExtResource("4_yla6r")
+texture_normal = ExtResource("3_7w74d")
+texture_pressed = ExtResource("4_k3k14")
 ignore_texture_size = true
 stretch_mode = 4
 

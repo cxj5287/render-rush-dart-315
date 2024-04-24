@@ -83,6 +83,7 @@ func set_fuel(value):
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("rings"):
 		fuel += 2
+		$Pickup.play()
 		
 	# Increment the growth level based on level
 		if level == 1:
@@ -117,15 +118,18 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("optimizer"):
 		if fuel < 10:
 			fuel+=2
+			$Pickup.play()
 		else:
 			fuel = 0;
 			max_fps = 60;
 			Engine.set_max_fps(60)
+			$PowerUp.play()
 
 func update_level(level):
 	forward_speed += 10
 	growth_level = 1
 	emit_signal("level_changed")
+	$LevelUp.play()
 	
 	
 	

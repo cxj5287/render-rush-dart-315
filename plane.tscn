@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://di7s0rhb0uodg"]
+[gd_scene load_steps=47 format=3 uid="uid://di7s0rhb0uodg"]
 
 [ext_resource type="Script" path="res://plane.gd" id="1_dg7sd"]
 [ext_resource type="PackedScene" uid="uid://bplut6q0y5xec" path="res://new_assets/proto_char.glb" id="2_gjmjm"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dsh1dajv826y4" path="res://assets/smoke/smoke_04.png" id="6_jc0g3"]
 [ext_resource type="Material" uid="uid://brpnm3lfdn6uv" path="res://new_assets/character/color_tiles_05.tres" id="7_1t37j"]
 [ext_resource type="Texture2D" uid="uid://c5kdjytv7l58k" path="res://assets/smoke/smoke_05.png" id="7_d4g45"]
+[ext_resource type="AudioStream" uid="uid://dbahol782mnpu" path="res://new_assets/sound/pickup.wav" id="14_7cvjy"]
+[ext_resource type="AudioStream" uid="uid://dfc6ftsl03tfk" path="res://new_assets/sound/level_up.wav" id="15_w3xfn"]
+[ext_resource type="AudioStream" uid="uid://blxqj041r8hk2" path="res://new_assets/sound/power-up.wav" id="16_l8thy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1dt4o"]
 resource_name = "Elf_Game_Asset_Cube_005"
@@ -795,6 +798,15 @@ shape = SubResource("BoxShape3D_8xhc5")
 [node name="Collision_Shape_01" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.0863633, 1.34037, 0)
 shape = SubResource("BoxShape3D_8xhc5")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_7cvjy")
+
+[node name="LevelUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_w3xfn")
+
+[node name="PowerUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_l8thy")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 
